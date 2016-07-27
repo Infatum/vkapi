@@ -23,7 +23,7 @@ defmodule VkAPI.Conn do
 
 
   @doc """
-  Создает новую структуру для выполнения запроса к апи.
+  Creates new %VkAPI.Conn{} structure to make requests to Vk API.
   """
   def new(method, params, token, api_version) when is_binary(method)
     and is_tuple(params) and is_number(api_version) do
