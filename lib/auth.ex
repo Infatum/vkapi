@@ -1,5 +1,7 @@
 defmodule VkAPI.Auth do
-	alias VkAPI.Models.AuthParams
+	alias VkAPI.Models.{AuthParams, AuthCredentials}
+
+  @auth_url "https://oauth.vk.com/token?grant_type=password&client_id=2274003&client_secret=hHbZxrka2uZ6jB1inYsH&"
 
 	def authorisation_url(
 		%AuthParams{
@@ -39,4 +41,12 @@ defmodule VkAPI.Auth do
     end
   end
   def authorisation_url(_), do: raise ArgumentError, "Check options in params"
+
+
+  @spec authorise(string, string) :: AuthCredentials.t 
+  def authorise(user, password) do
+    HTTPoison.start
+    data = HTTPoison.get!(@auth_url<>URI.encode_query([username: user, password: password])) 
+    Poison.decode!(data.body, as: %AuthCredentials{})
+  end
 end
