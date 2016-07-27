@@ -1,16 +1,16 @@
 defmodule VkAPI.Conn do
   @moduledoc """
-  Предоставляет основной struct для выполнения запросов к API
-  Наподобие Plug.Conn
+  Provides basic struct to query API
+  like Plug.Conn
   """
   @current_api_version "5.53"
 
   @doc """
-  Чтобы обратиться к методу API ВКонтакте,
-  Вам необходимо выполнить POST или GET запрос такого вида:
+  To access the API methods VKontakte,
+  You need to perform a POST or GET request for this type of:
   https://api.vk.com/method/METHOD_NAME?PARAMETERS&access_token=ACCESS_TOKEN&v=V
-  Все указанные параметры содержатся в request.
-  После выполнения запроса response заполнится ответом от сервера
+  All these settings are contained by ':request'.
+  ':response' is filled after response from the server
   """
   defstruct %VkAPI.Conn{
     request: %{
