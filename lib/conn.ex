@@ -3,6 +3,7 @@ defmodule VkAPI.Conn do
   Предоставляет основной struct для выполнения запросов к API
   Наподобие Plug.Conn
   """
+  @current_api_version "5.53"
 
   @doc """
   Чтобы обратиться к методу API ВКонтакте,
@@ -25,7 +26,7 @@ defmodule VkAPI.Conn do
   @doc """
   Creates new %VkAPI.Conn{} structure to make requests to Vk API.
   """
-  def new(method, params, token, api_version) when is_binary(method)
+  def new(method, params, token, api_version \\ @current_api_version) when is_binary(method)
     and is_tuple(params) and is_number(api_version) do
     %VkAPI.Conn{
       request: %{
