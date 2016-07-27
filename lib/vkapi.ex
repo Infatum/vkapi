@@ -1,0 +1,2 @@
+defmodule VkAPI do
+end
