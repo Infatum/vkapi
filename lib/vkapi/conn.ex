@@ -12,7 +12,7 @@ defmodule VkAPI.Conn do
   All these settings are contained by ':request'.
   ':response' is filled after response from the server
   """
-  defstruct %VkAPI.Conn{
+  defstruct [
     request: %{
       method_name: nil,
       parameters: %{},
@@ -20,7 +20,7 @@ defmodule VkAPI.Conn do
       api_version: nil
     },
     response: %{}
-  }
+  ]
 
 
   @doc """

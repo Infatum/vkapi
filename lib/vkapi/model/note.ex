@@ -4,7 +4,7 @@ defmodule VkAPI.Model.Note do
   defstruct [:id, :owner_id, :title, :text,
              :date, :camments, :read_comments, :view_url]
 
-  @type t :: %Note{
+  @type t :: %VkAPI.Model.Note{
     id:            integer,
     owner_id:      integer,
     title:         binary,
@@ -12,6 +12,6 @@ defmodule VkAPI.Model.Note do
     date:          integer,
     camments:      integer,
     read_comments: integer,
-    view_url:      binaty
+    view_url:      binary
   }
 end
