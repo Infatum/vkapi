@@ -23,27 +23,28 @@ defmodule VkAPI.Auth do
 					display: display,
 					response_type: :token,
 					v: version)
-      type == :site || type == :serverside
+      type == :site || type == :serverside ->
         "https://oauth.vk.com/authorize?" <>
         URI.encode_query(client_id: app_id,
           scope: settings,
           redirect_uri: redirect_url,
           response_type: :token,
           v: version)
-      type == :code
+      type == :code ->
         "https://oauth.vk.com/authorize?" <>
         URI.encode_query(client_id: app_id,
           scope: settings,
           redirect_uri: redirect_url,
           response_type: :code,
           v: version)
-       true -> raise "Auth type is invalid!"
+       true -> 
+        raise "Auth type is invalid!"
     end
   end
   def authorisation_url(_), do: raise ArgumentError, "Check options in params"
 
 
-  @spec authorise(string, string) :: AuthCredentials.t
+  @spec authorise(binary, binary) :: AuthCredentials.t
   def authorise(user, password) do
     HTTPoison.start
     data = HTTPoison.get!(@auth_url<>URI.encode_query([username: user, password: password]))
