@@ -33,7 +33,8 @@ defmodule VkAPI.Mixfile do
   defp deps do
     [
       {:httpoison, "~> 0.9.0"},
-      {:poison, "~> 2.0"}
+      {:poison, "~> 2.0"},
+      {:dialyxir, "~> 0.3.5", only: [:dev]}
     ]
   end
 end

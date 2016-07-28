@@ -1,4 +1,5 @@
 defmodule VkAPI.Conn do
+
   @moduledoc """
   Provides basic struct to query API
   like Plug.Conn
@@ -21,6 +22,16 @@ defmodule VkAPI.Conn do
     },
     response: %{}
   ]
+
+  @type t :: %VkAPI.Conn{
+    request: %{
+      method_name: binary,
+      parameters: Map,
+      access_token: binary,
+      api_version: binary
+    },
+    response: Maper
+  }
 
 
   @doc """
